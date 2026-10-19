@@ -1,0 +1,52 @@
+---
+const today = new Date();
+---
+
+<footer>
+	<div class="inner">
+		<span class="eyebrow">SearchIRL</span>
+		<div class="row">
+			<p class="copyright">© {today.getFullYear()} SearchIRL</p>
+			<div class="social-links">
+				<a href="https://www.linkedin.com/company/searchirl/" target="_blank" rel="noopener">LinkedIn</a>
+			</div>
+		</div>
+	</div>
+</footer>
+<style>
+	footer {
+		border-top: 1px solid rgb(var(--line));
+		padding: 2em 1em 4em;
+		margin-top: 3em;
+	}
+	.inner {
+		max-width: 1100px;
+		margin: 0 auto;
+	}
+	.row {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		flex-wrap: wrap;
+		gap: 0.75em;
+	}
+	.copyright {
+		margin: 0;
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		color: rgb(var(--gray));
+	}
+	.social-links {
+		display: flex;
+		gap: 1.5em;
+	}
+	.social-links a {
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		text-decoration: none;
+		color: rgb(var(--gray-dark));
+	}
+	.social-links a:hover {
+		color: var(--accent);
+	}
+</style>

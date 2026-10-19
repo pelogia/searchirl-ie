@@ -1,0 +1,208 @@
+---
+import { SITE_TITLE } from '../consts';
+
+const navItems = [
+	{ href: '/blog', label: 'Blog' },
+];
+const pathname = new URL(Astro.request.url).pathname;
+const isActive = (href: string) => pathname === href || pathname === `${href}/`;
+---
+
+<header>
+	<nav id="site-nav">
+		<a class="brand" href="/">{SITE_TITLE}</a>
+		<div class="header-controls">
+			<button
+				class="menu-toggle"
+				id="menu-toggle"
+				type="button"
+				aria-expanded="false"
+				aria-controls="nav-panel"
+				aria-label="Toggle menu"
+			>
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+		</div>
+		<div class="nav-panel" id="nav-panel">
+			<div class="internal-links">
+				{
+					navItems.map((item) => (
+						<a href={item.href} class:list={[{ active: isActive(item.href) }]}>
+							{item.label}
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</nav>
+</header>
+
+<script>
+	const toggle = document.getElementById('menu-toggle');
+	const nav = document.getElementById('site-nav');
+
+	if (toggle && nav) {
+		toggle.addEventListener('click', () => {
+			const isOpen = nav.classList.toggle('open');
+			toggle.setAttribute('aria-expanded', String(isOpen));
+			document.body.classList.toggle('nav-lock', isOpen);
+		});
+
+		nav.querySelectorAll('.nav-panel a').forEach((link) => {
+			link.addEventListener('click', () => {
+				nav.classList.remove('open');
+				toggle.setAttribute('aria-expanded', 'false');
+				document.body.classList.remove('nav-lock');
+			});
+		});
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && nav.classList.contains('open')) {
+				nav.classList.remove('open');
+				toggle.setAttribute('aria-expanded', 'false');
+				document.body.classList.remove('nav-lock');
+			}
+		});
+	}
+</script>
+
+<style>
+	header {
+		background: rgb(var(--paper));
+		border-bottom: 1px solid rgb(var(--line));
+		position: sticky;
+		top: 0;
+		z-index: 20;
+	}
+	nav {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		max-width: 1100px;
+		margin: 0 auto;
+		padding: 0 1em;
+	}
+	.brand {
+		order: 0;
+		flex-shrink: 0;
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: 1.1rem;
+		color: rgb(var(--ink));
+		text-decoration: none;
+		padding: 1em 0;
+		white-space: nowrap;
+	}
+	.nav-panel {
+		order: 1;
+		margin-left: auto;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 1.5rem;
+		min-width: 0;
+	}
+	.header-controls {
+		order: 2;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 1.25rem;
+		flex-shrink: 0;
+		margin-left: auto;
+	}
+	.internal-links {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	nav a {
+		padding: 1.4em 0.6em;
+		color: rgb(var(--gray-dark));
+		text-decoration: none;
+		font-size: 0.9rem;
+		font-weight: 500;
+	}
+	nav a.active {
+		color: var(--accent);
+	}
+	nav a:hover {
+		color: var(--accent);
+	}
+	.menu-toggle {
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 5px;
+		width: 40px;
+		height: 40px;
+		padding: 0;
+		border: none;
+		background: none;
+		cursor: pointer;
+		flex-shrink: 0;
+	}
+	.menu-toggle span {
+		display: block;
+		width: 22px;
+		height: 2px;
+		background: rgb(var(--ink));
+		border-radius: 1px;
+		transition:
+			transform 0.2s ease,
+			opacity 0.2s ease;
+	}
+	nav.open .menu-toggle span:nth-child(1) {
+		transform: translateY(7px) rotate(45deg);
+	}
+	nav.open .menu-toggle span:nth-child(2) {
+		opacity: 0;
+	}
+	nav.open .menu-toggle span:nth-child(3) {
+		transform: translateY(-7px) rotate(-45deg);
+	}
+
+	@media (max-width: 760px) {
+		.menu-toggle {
+			display: flex;
+		}
+		.nav-panel {
+			display: none;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			flex-direction: column;
+			align-items: stretch;
+			gap: 0;
+			max-height: calc(100vh - 100%);
+			overflow-y: auto;
+			background: rgb(var(--paper));
+			border-bottom: 1px solid rgb(var(--line));
+			box-shadow: var(--box-shadow);
+		}
+		nav.open .nav-panel {
+			display: flex;
+		}
+		.internal-links {
+			flex-direction: column;
+			align-items: stretch;
+			width: 100%;
+		}
+		nav a {
+			padding: 0.9em 1.25em;
+			border-bottom: 1px solid rgb(var(--line));
+			font-size: 1rem;
+		}
+	}
+</style>
+
+<style is:global>
+	body.nav-lock {
+		overflow: hidden;
+	}
+</style>

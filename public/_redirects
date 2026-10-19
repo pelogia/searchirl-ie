@@ -1,0 +1,2 @@
+# Flat build output: collapse .html URLs to clean paths.
+/index.html  /  301!

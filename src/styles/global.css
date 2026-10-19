@@ -1,0 +1,211 @@
+/*
+  Design language: technical / spec-sheet. Bold geometric display type paired
+  with small monospace labels, thin ruled grid lines, restrained color.
+  Inspired by itsua.com — adapt the visual language, not the content.
+*/
+
+:root {
+	/* Swap this to change the site's single accent color. */
+	--accent: #2f4cff;
+	--accent-dark: #1b2fb8;
+
+	--ink: 14, 16, 18; /* near-black text */
+	--paper: 255, 255, 255; /* page background */
+	--paper-dim: 250, 250, 248; /* subtle section tint */
+	--line: 226, 226, 221; /* thin rule color */
+	--gray: 110, 114, 120; /* secondary text */
+	--gray-dark: 40, 42, 46;
+
+	--box-shadow: 0 2px 6px rgba(var(--ink), 6%);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	background: rgb(var(--paper));
+}
+
+body {
+	font-family: var(--font-body);
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	background: rgb(var(--paper));
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	color: rgb(var(--gray-dark));
+	font-size: 18px;
+	line-height: 1.6;
+}
+
+main {
+	width: 720px;
+	max-width: calc(100% - 2em);
+	margin: auto;
+	padding: 3em 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0 0 0.5rem 0;
+	color: rgb(var(--ink));
+	line-height: 1.1;
+	font-family: var(--font-display);
+	font-weight: 700;
+	letter-spacing: -0.01em;
+}
+h1 {
+	font-size: clamp(2.25rem, 5vw, 3.5rem);
+}
+h2 {
+	font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+h3 {
+	font-size: 1.4rem;
+}
+h4 {
+	font-size: 1.15rem;
+}
+h5 {
+	font-size: 1rem;
+}
+
+strong,
+b {
+	font-weight: 600;
+}
+a {
+	color: var(--accent);
+}
+a:hover {
+	color: var(--accent-dark);
+}
+p {
+	margin-bottom: 1em;
+}
+.prose p {
+	margin-bottom: 1.5em;
+}
+textarea,
+input {
+	font-size: 16px;
+	font-family: var(--font-body);
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.95em;
+}
+th,
+td {
+	text-align: left;
+	padding: 0.6em 0.8em;
+	border-bottom: 1px solid rgb(var(--line));
+	vertical-align: top;
+}
+th {
+	font-family: var(--font-mono);
+	text-transform: uppercase;
+	font-size: 0.75em;
+	letter-spacing: 0.04em;
+	color: rgb(var(--gray));
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+code {
+	font-family: var(--font-mono);
+	padding: 2px 5px;
+	background-color: rgba(var(--ink), 6%);
+	border-radius: 2px;
+	font-size: 0.9em;
+}
+pre {
+	padding: 1.5em;
+	border-radius: 4px;
+	background-color: rgba(var(--ink), 4%);
+	overflow-x: auto;
+}
+pre > code {
+	all: unset;
+	font-family: var(--font-mono);
+}
+blockquote {
+	border-left: 2px solid var(--accent);
+	padding: 0.2em 0 0.2em 1.25em;
+	margin: 1.5em 0;
+	font-size: 1.1em;
+	color: rgb(var(--gray-dark));
+}
+hr {
+	border: none;
+	border-top: 1px solid rgb(var(--line));
+	margin: 2em 0;
+}
+@media (max-width: 720px) {
+	body {
+		font-size: 17px;
+	}
+	main {
+		padding: 1.5em 1em;
+	}
+}
+
+/* --- Shared typographic motifs --- */
+
+/* Small uppercase monospace label, e.g. "§ 01 — ABOUT" */
+.eyebrow {
+	display: block;
+	font-family: var(--font-mono);
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: rgb(var(--gray));
+	margin-bottom: 0.75rem;
+}
+.eyebrow .accent {
+	color: var(--accent);
+}
+
+/* Thin ruled section divider */
+.rule {
+	border: none;
+	border-top: 1px solid rgb(var(--line));
+	margin: 0;
+}
+
+/* A section with a tick mark in the left margin (single accent color) */
+.ticked {
+	position: relative;
+	padding-left: 1rem;
+}
+.ticked::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0.3em;
+	bottom: 0.3em;
+	width: 3px;
+	background: var(--accent);
+}
+
+.sr-only {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}

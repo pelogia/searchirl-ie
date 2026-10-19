@@ -1,0 +1,48 @@
+---
+import '../styles/global.css';
+import { SITE_TITLE } from '../consts';
+import { Font } from 'astro:assets';
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+let pathname = Astro.url.pathname;
+if (pathname.endsWith('/index.html')) {
+	pathname = pathname.slice(0, -'index.html'.length);
+} else if (pathname.endsWith('.html')) {
+	pathname = pathname.slice(0, -'.html'.length);
+}
+const canonicalURL = new URL(pathname, Astro.site);
+
+const { title, description } = Astro.props;
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<meta name="generator" content={Astro.generator} />
+
+<Font cssVariable="--font-display" preload />
+<Font cssVariable="--font-body" preload />
+<Font cssVariable="--font-mono" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="description" content={description} />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
