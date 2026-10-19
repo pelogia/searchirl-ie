@@ -9,6 +9,8 @@ import react from '@astrojs/react';
 
 import netlify from '@astrojs/netlify';
 
+const isDev = process.argv.some((a) => a === 'dev');
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.searchirl.ie',
@@ -42,5 +44,5 @@ export default defineConfig({
       },
   ],
 
-  adapter: netlify(),
+  adapter: isDev ? undefined : netlify(),
 });

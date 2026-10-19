@@ -4,8 +4,8 @@
     {
       "name": "astro-dev",
       "runtimeExecutable": "bash",
-      "runtimeArgs": ["-lc", "export NVM_DIR=\"$HOME/.nvm\"; [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"; nvm use 22.22.0 >/dev/null; npm run dev -- --port 4321"],
-      "port": 4321
+      "runtimeArgs": ["-lc", "export NVM_DIR=\"$HOME/.nvm\"; [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\"; nvm use 22.22.0 >/dev/null; cd ~/searchirl-ie && npm run dev -- --port 4322"],
+      "port": 4322
     }
   ]
 }

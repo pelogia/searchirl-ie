@@ -1,44 +1,416 @@
 ---
+import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { SITE_DESCRIPTION } from '../consts';
+
+import event1Photo from '../assets/events/event-1.jpg';
+import event2Photo from '../assets/events/event-2.jpg';
+import event3Photo from '../assets/events/event-3.jpg';
+import event4Photo from '../assets/events/event-4.jpg';
+import event5Photo from '../assets/events/event-5.jpg';
+import event6Photo from '../assets/events/event-6.jpg';
+import event7Photo from '../assets/events/event-7.jpg';
+
+const pageTitle = 'SearchIRL — Dublin\'s SEO Meetup';
+
+const events = [
+	{
+		name: 'SearchIRL 1',
+		date: 'March 2025',
+		photo: event1Photo,
+		speakers: [
+			{ name: 'Luke McLeod', url: 'https://www.linkedin.com/in/luke-mcleod1/' },
+			{ name: 'Barry Adams', url: 'https://www.linkedin.com/in/barryadams/' },
+		],
+	},
+	{
+		name: 'SearchIRL 2',
+		date: 'June 2025',
+		photo: event2Photo,
+		speakers: [
+			{ name: 'Joanna Isabella Formella', url: 'https://www.linkedin.com/in/joannaformella/' },
+			{ name: 'Aoife Mc Ilraith', url: 'https://www.linkedin.com/in/aoifem/' },
+		],
+	},
+	{
+		name: 'SearchIRL 3',
+		date: 'August 2025',
+		photo: event3Photo,
+		speakers: [
+			{ name: 'Iky Tai', url: 'https://www.linkedin.com/in/iky-tai/' },
+			{ name: 'Ryan Jones', url: 'https://www.linkedin.com/in/ryan-g-jones/' },
+		],
+	},
+	{
+		name: 'SearchIRL 4',
+		date: 'Nov 2025',
+		photo: event4Photo,
+		speakers: [
+			{ name: 'Rachel Stires', url: 'https://www.linkedin.com/in/rastires/' },
+			{ name: 'Nick Wildson', url: 'https://www.linkedin.com/in/nickwilsdon/' },
+		],
+	},
+	{
+		name: 'SearchIRL 5',
+		date: 'April 2026',
+		photo: event5Photo,
+		galleryUrl: 'https://drive.google.com/drive/u/1/folders/1LFrxD05l0yzBA4k20Ae8-x5jkvzGkkkn',
+		speakers: [
+			{ name: 'Andrea Piackova', url: 'https://www.linkedin.com/in/andrea-piackova/' },
+			{ name: 'Katarina Dahlin', url: 'https://www.linkedin.com/in/katarina-dahlin/' },
+			{ name: 'John Coleman', url: 'https://www.linkedin.com/in/johncoleman10/' },
+		],
+	},
+	{
+		name: 'SearchIRL 6',
+		date: 'Jul 2026',
+		photo: event7Photo,
+		galleryUrl: 'https://drive.google.com/drive/u/1/folders/1o-8v-X4-Iuq1Alo47FW--I2574AQuusS',
+		speakers: [
+			{ name: 'Philippine Sikora', url: 'https://www.linkedin.com/in/philippinesikora/' },
+			{ name: 'Vanda Pókecz', url: 'https://www.linkedin.com/in/vanda-pokecz/' },
+		],
+	},
+	{
+		name: 'SearchIRL 7',
+		date: 'Sep 2026',
+		photo: event6Photo,
+		galleryUrl: 'https://drive.google.com/drive/u/1/folders/1kK6YrO7I6eMMj9zdTkATAy8Cha7OO22Z',
+		speakers: [
+			{ name: 'Edgar Gil Cuesta', url: 'https://www.linkedin.com/in/edgar-gil-cuesta/' },
+			{ name: 'Simone de Paula', url: 'https://www.linkedin.com/in/simodepth96/' },
+			{ name: 'Rob Gardner', url: 'https://www.linkedin.com/in/robjgardner/' },
+			{ name: 'Darren McManus', url: 'https://www.linkedin.com/in/darrenmcmanus/' },
+			{ name: 'Katie Biggs', url: 'https://www.linkedin.com/in/katie-biggs-she-her/' },
+			{ name: 'Valentina Pozzi', url: 'https://www.linkedin.com/in/valentina-pozzi-473878aa/' },
+		],
+	},
+	{
+		name: 'SearchIRL 8',
+		date: 'Nov 2026',
+		photo: null,
+		speakers: [],
+	},
+];
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={pageTitle} description={SITE_DESCRIPTION} />
+		<script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
 	</head>
 	<body>
 		<Header />
-		<main class="home">
-			<section class="hero">
-				<span class="eyebrow">Dublin, Ireland</span>
+
+		<!-- HERO -->
+		<section class="hero">
+			<div class="hero-inner">
+				<p class="hero-eyebrow">Dublin, Ireland · Since 2025</p>
 				<h1>SearchIRL</h1>
-				<p class="tagline">An SEO meetup in Dublin.</p>
-			</section>
-		</main>
+				<p class="hero-sub">The SEO meetup in Dublin.</p>
+				<div class="luma-wrap">
+					<a
+						href="https://luma.com/event/evt-CARYp9XnKhAwEjc"
+						class="luma-checkout--button"
+						data-luma-action="checkout"
+						data-luma-event-id="evt-CARYp9XnKhAwEjc"
+					>
+						Register for next event ↗
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- ABOUT -->
+		<section class="about">
+			<div class="container">
+				<span class="section-label">About</span>
+				<p class="placeholder-text">
+					[Placeholder — add your description here]
+				</p>
+			</div>
+		</section>
+
+		<!-- PREVIOUS EVENTS -->
+		<section class="events">
+			<div class="container">
+				<span class="section-label">Previous Events</span>
+				<h2>Eight events and counting</h2>
+				<ul class="grid">
+					{
+						events.map((event) => (
+							<li class="card">
+								{event.photo ? (
+									<Image
+										class="card-photo"
+										src={event.photo}
+										alt={`${event.name} photo`}
+										width={480}
+										height={360}
+									/>
+								) : (
+									<div class="card-photo-placeholder">
+										<svg viewBox="0 0 24 24" aria-hidden="true" width="28" height="28">
+											<path
+												fill="currentColor"
+												d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+											/>
+										</svg>
+										<span>Coming soon</span>
+									</div>
+								)}
+								<div class="card-body">
+									<div class="card-meta">
+										<span class="card-name">{event.name}</span>
+										<span class="card-date">{event.date}</span>
+									</div>
+									{event.speakers.length > 0 ? (
+										<ul class="speakers">
+											{event.speakers.map((s) => (
+												<li>
+													<a href={s.url} target="_blank" rel="noopener">{s.name}</a>
+												</li>
+											))}
+										</ul>
+									) : (
+										<p class="speakers-tbc">Speakers TBC</p>
+									)}
+									{event.galleryUrl && (
+										<a class="gallery-link" href={event.galleryUrl} target="_blank" rel="noopener">
+											View photos ↗
+										</a>
+									)}
+								</div>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</section>
+
 		<Footer />
 	</body>
 </html>
 
 <style>
-	.home {
+	/* ── Shared ── */
+	.container {
 		max-width: 1100px;
 		margin: 0 auto;
 		padding: 0 1.5rem;
 	}
+	.section-label {
+		display: block;
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin-bottom: 0.75rem;
+	}
+
+	/* ── Hero ── */
 	.hero {
-		padding: 6rem 0 4rem;
+		background: #0A5C3B;
+		background-image: linear-gradient(135deg, #0A5C3B 0%, #169B62 100%);
+		color: #fff;
+		padding: 6rem 1.5rem 5rem;
+		position: relative;
+		overflow: hidden;
+	}
+	.hero::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-image: repeating-linear-gradient(
+			0deg,
+			transparent,
+			transparent 79px,
+			rgba(255,255,255,0.04) 80px
+		),
+		repeating-linear-gradient(
+			90deg,
+			transparent,
+			transparent 79px,
+			rgba(255,255,255,0.04) 80px
+		);
+		pointer-events: none;
+	}
+	.hero-inner {
+		max-width: 1100px;
+		margin: 0 auto;
+		position: relative;
+	}
+	.hero-eyebrow {
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: rgba(255,255,255,0.7);
+		margin: 0 0 1rem;
 	}
 	.hero h1 {
-		font-size: clamp(3rem, 8vw, 6rem);
-		margin: 0.25rem 0;
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: clamp(4rem, 12vw, 9rem);
+		line-height: 0.95;
+		color: #fff;
+		margin: 0 0 1.25rem;
+		letter-spacing: -0.02em;
 	}
-	.tagline {
-		font-size: 1.25rem;
+	.hero-sub {
+		font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+		color: rgba(255,255,255,0.85);
+		margin: 0 0 2.5rem;
+		font-weight: 400;
+	}
+	.luma-wrap :global(.luma-checkout--button) {
+		display: inline-block;
+		background: #fff;
+		color: #0A5C3B !important;
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: 1rem;
+		padding: 0.9rem 2rem;
+		border-radius: 4px;
+		text-decoration: none;
+		transition: background 0.15s ease, transform 0.1s ease;
+		border: none;
+		cursor: pointer;
+	}
+	.luma-wrap :global(.luma-checkout--button:hover) {
+		background: rgba(255,255,255,0.9);
+		transform: translateY(-1px);
+	}
+
+	/* ── About ── */
+	.about {
+		padding: 5rem 0;
+		background: rgb(var(--paper));
+		border-bottom: 1px solid rgb(var(--line));
+	}
+	.placeholder-text {
+		font-size: 1.15rem;
+		color: rgb(var(--gray));
+		font-style: italic;
+		max-width: 680px;
+	}
+
+	/* ── Events ── */
+	.events {
+		padding: 5rem 0 6rem;
+		background: rgb(var(--paper-dim));
+	}
+	.events h2 {
+		font-size: clamp(2rem, 5vw, 3.5rem);
+		margin: 0 0 3rem;
+		letter-spacing: -0.02em;
+	}
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+		gap: 1.5rem;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.card {
+		background: rgb(var(--paper));
+		border: 1px solid rgb(var(--line));
+		overflow: hidden;
+	}
+	.card-photo {
+		display: block;
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
+	}
+	.card-photo-placeholder {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		aspect-ratio: 4 / 3;
+		background: rgba(var(--ink), 3%);
+		color: rgb(var(--gray));
+	}
+	.card-photo-placeholder span {
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+	}
+	.card-body {
+		padding: 1rem;
+	}
+	.card-meta {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.5rem;
+		margin-bottom: 0.75rem;
+		border-bottom: 1px solid rgb(var(--line));
+		padding-bottom: 0.5rem;
+	}
+	.card-name {
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: 1rem;
+		color: rgb(var(--ink));
+	}
+	.card-date {
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		color: rgb(var(--gray));
+		white-space: nowrap;
+	}
+	.speakers {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.speakers li {
+		padding: 0.3rem 0;
+		border-bottom: 1px solid rgb(var(--line));
+	}
+	.speakers li:last-child {
+		border-bottom: none;
+	}
+	.speakers a {
+		font-size: 0.85rem;
 		color: rgb(var(--gray-dark));
-		margin: 1rem 0 0;
+		text-decoration: none;
+	}
+	.speakers a:hover {
+		color: var(--accent);
+	}
+	.speakers-tbc {
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		color: rgb(var(--gray));
+		margin: 0;
+	}
+	.gallery-link {
+		display: inline-block;
+		margin-top: 0.75rem;
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		color: var(--accent);
+		text-decoration: none;
+	}
+	.gallery-link:hover {
+		text-decoration: underline;
+	}
+
+	/* ── Responsive ── */
+	@media (max-width: 640px) {
+		.hero {
+			padding: 4rem 1.5rem 3.5rem;
+		}
+		.grid {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>

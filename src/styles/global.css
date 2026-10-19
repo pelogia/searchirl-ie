@@ -6,8 +6,9 @@
 
 :root {
 	/* Swap this to change the site's single accent color. */
-	--accent: #2f4cff;
-	--accent-dark: #1b2fb8;
+	--accent: #169B62;
+	--accent-dark: #0A5C3B;
+	--accent-orange: #FF883E;
 
 	--ink: 14, 16, 18; /* near-black text */
 	--paper: 255, 255, 255; /* page background */
