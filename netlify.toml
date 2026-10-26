@@ -5,6 +5,11 @@
 [build.environment]
   NODE_VERSION = "22.22.0"
 
+[[redirects]]
+  from = "/barry"
+  to = "https://docs.google.com/forms/d/e/1FAIpQLSelx8nA_b1EaGsgqvV1Two3VgKGOqpRLIfjlXRunkRgXORx3g/viewform?usp=dialog"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]
