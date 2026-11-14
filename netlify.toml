@@ -10,6 +10,11 @@
   to = "https://docs.google.com/forms/d/e/1FAIpQLSelx8nA_b1EaGsgqvV1Two3VgKGOqpRLIfjlXRunkRgXORx3g/viewform?usp=dialog"
   status = 301
 
+[[redirects]]
+  from = "/feedback"
+  to = "https://docs.google.com/forms/d/e/1FAIpQLSfI00dZYRF7YfTUF3KMF04etzqbU-iOpbr8Tdddkdc6Oh-Mgg/viewform?usp=dialog"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]
